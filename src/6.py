@@ -30,11 +30,35 @@ T     S     G
 
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
-        length = (len(s) - 1) // numRows
-        a = [[0] * length] * numRows
-        for index, char in enumerate(s):
-            if index
-        print(a)
-        # pass
+        columns = len(s)
+        res = [list(s)] * numRows
+        result = [['0' for _ in range(columns)] for _ in range(numRows)]
+        if numRows == 1:
+            return s
+        else:
+            result[0][0] = res[0][0]
+            i = 1
+            j = 1
+            bot = True
+            while(j < columns and i < numRows):
+                result[i][j] = res[i][j]
+                if i == numRows-1:
+                    bot = False
+                elif i == 0:
+                    bot = True
+                else:
+                    pass
+                j += 1
+                if bot:
+                    i += 1
+                else:
+                    i -= 1
+            tmp = []
+            for i in range(numRows):
+                for j in range(columns):
+                    if result[i][j] != '0':
+                        tmp.append(result[i][j])
+            return ''.join(tmp)
 
-Solution().convert('LEETCODEISHIRING', 3)
+
+Solution().convert('AB', 1)

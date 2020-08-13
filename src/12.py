@@ -43,20 +43,27 @@ C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
 '''
 
 class Solution:
-    def intToRoman(self, num: int) -> str:
-        str_dict = {1: 'I',
-                    5: 'V',
-                    10: 'X',
-                    50: 'L',
-                    100: 'C',
+    def intToRoman(self, num):
+        str_dict = {1000: 'M',
+                    900: 'CM',
                     500: 'D',
-                    1000: 'M'
-                    }
-        keys = reversed(list(str_dict.keys()))
-
-        for key in list(keys):
-            if num / key :
+                    400: 'CD',
+                    100: 'C',
+                    90: 'XC',
+                    50: 'L',
+                    40: 'XL',
+                    10: 'X',
+                    9: 'IX',
+                    5: 'V',
+                    4: 'IV',
+                    1: 'I'}
+        res = ''
+        for key, value in str_dict.items():
+            count = num // key
+            num = num % key
+            res += value * count
+        return res
 
 
 cli = Solution()
-cli.intToRoman(900)
+print(cli.intToRoman(999))

@@ -7,29 +7,26 @@
 @Date   ：2020/8/6 11:25 AM
 @Desc   ：
 =================================================='''
-import math
 
-while(True):
-    inpu = input()
-    m = int(inpu.split(' ')[0])
-    n = int(inpu.split(' ')[1])
-    ret = []
-    if m < 100:
-        print('No')
-    elif n > 999:
-        print('No')
-    else:
-        for i in range(m, n+1):
-            j = i
-            sum = 0
-            x = 10
-            while(j > 0):
-                s = j % x
-                j = j // x
-                sum += int(math.pow(s, 3))
-            if sum == i:
-                ret.append(str(i))
-        if ret:
-            print(' '.join(ret))
-        else:
-            print('No')
+class Solution:
+    def modifyString(self, s: str) -> str:
+        s = list('0' + s + '0')
+        l = len(s)
+        alpha = 'abcdefghijklmnopqrstuvwxyz'
+        i = 1
+        while i < l-1:
+            if s[i] == '?':
+                k = 0
+                while k < len(alpha):
+                    if alpha[k] not in [s[i - 1], s[i + 1]]:
+                        s[i] = alpha[k]
+                        break
+                    k += 1
+            i += 1
+        return ''.join(s[1:-1])
+
+
+ret = Solution().modifyString("?ob?b???")
+print(ret)
+
+

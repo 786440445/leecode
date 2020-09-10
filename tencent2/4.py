@@ -8,11 +8,22 @@
 @Desc   ：
 =================================================='''
 
-def func(n, matrix):
-    for i in range(n)[1:]:
-        sum = matrix[i][0] ^ matrix[i][1] ^ matrix[i][2] ^ matrix[i][3] ^ matrix[i][4] ^ matrix[i][5]
-        a =
 
+def func(n, matrix):
+    flag = False
+    for i in range(n):
+        f = True
+        for j in range(6):
+            if matrix[i][j] != matrix[i+1][j]:
+                f = False
+                break
+        if f:
+            flag = True
+            break
+    if flag:
+        return 'YES'
+    else:
+        return 'NO'
 
 
 t = int(input())
@@ -21,6 +32,7 @@ while t > 0:
     matrix = []
     for i in range(n):
         inp = list(map(int, input().split(' ')))
+        inp.sort()
         matrix.append(inp)
     ret = func(n, matrix)
     print(ret)

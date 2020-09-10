@@ -27,7 +27,6 @@ class Solution:
         return count
 
 
-
 t = int(input())
 xa = list(map(int, input().split(',')))
 ret = Solution().getHouses(t, xa)

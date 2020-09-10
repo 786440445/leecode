@@ -44,4 +44,5 @@ class Solution:
 arr = list(map(int, input().split(',')))
 ret = Solution().find_best_cut(arr)
 
+
 print(ret)

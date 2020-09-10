@@ -40,13 +40,4 @@ def is_sh(n):
             return False
     return True
 
-
-# print(is_sh(8))
-# print(is_sh(7))
-# print(is_sh(6))
-# print(is_sh(5))
-# print(is_sh(4))
-# print(is_sh(3))
-# print(is_sh(2))
-
 func()

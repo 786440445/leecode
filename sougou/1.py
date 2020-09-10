@@ -23,5 +23,6 @@ class Solution():
         else:
             return min_num
 
+
 ret = Solution().func()
 print(ret)

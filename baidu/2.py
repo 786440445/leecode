@@ -8,36 +8,68 @@
 @Desc   ：
 =================================================='''
 
-
-import math
 def func():
     n = int(input())
     matrix = []
     for i in range(n):
         matrix.append(list(map(int, input().split(' '))))
 
-    dp = [[0] * n for _ in range(n)]
-    def dps(dp, matrix, x, y, cur_val, n):
-        dy = [1, 0, -1, 0]
-        dx = [0, 1, 0, -1]
-        if dp[x][y] <= cur_val:
-            return
-        else:
-            dp[x][y] = cur_val
+    v = n * n
+    cost = [[float('inf')]*v for _ in range(v)]
+    for i in range(n):
+        for j in range(n-1):
+            s = 3*i + j
+            e = 3*i + j+1
+            cost[s][s] = 0
+            cost[s][e] = abs(matrix[i][j+1] - matrix[i][j])
+    print(cost)
 
-        for i in range(4):
-            newx = x + dx[i]
-            newy = y + dy[i]
-            if matrix[newx][newy]:
-                continue
-            if newx < n and newx > 0 and newy > 0 and newy < n:
-                val = matrix[x][y]
-                matrix[x][y] = -1
-                # dp[newx][newy] = dp[x][y] + abs(matrix[newx][newy] - matrix[x][y])
-                dps(dp, matrix, newx, newy, cur_val + abs(val-matrix[x][y]), n)
-                matrix[x][y] = val
-
-    dps(dp, matrix, 0, 0, 0, n)
-    print(dp[n-1][n-1])
 
 func()
+#
+#
+# def dijkstra(s):
+#     distance[s] = 0
+#     while True:
+#         v = -1
+#         for u in range(V):
+#             if not used[u] and (v == -1 or distance[u] < distance[v]):
+#                 v = u
+#
+#         if v == -1:
+#             break
+#
+#         used[v] =True
+#         for u in range(V):
+#             distance[u] = min(distance[u], distance[v] + cost[v][u])
+#
+# func()
+#
+# #
+# # V = 7
+# # used = [False for _ in range(V)]
+# # distance = [float('inf') for _ in range(V)]
+# # cost = [[float('inf') for _ in range(V)] for _ in range(V)]
+#
+#
+# def dijkstra(s):
+#     distance[s] = 0
+#     while True:
+#         v = -1
+#         for u in range(V):
+#             if not used[u] and (v == -1 or distance[u] < distance[v]):
+#                 v = u
+#         if v == -1:
+#             break
+#         used[v] =True
+#         for u in range(V):
+#             distance[u] = min(distance[u], distance[v] + cost[v][u])
+#
+#
+# if __name__ == '__main__':
+#     for _ in range(12):
+#         v, u, w = list(map(int, input().split()))
+#         cost[v][u] = w
+#     s = int(input('请输入一个起始点：'))
+#     dijkstra(s)
+#     print(distance)

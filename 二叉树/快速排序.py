@@ -25,50 +25,63 @@ def quickSort(arr, low, high):
         quickSort(arr, low, pi - 1)
         quickSort(arr, pi + 1, high)
 
-#
 
-# l = left + 1
-#             r = right
-#             while l <= r:
-#                 if nums[l] < pivot and nums[r] > pivot:
-#                     nums[l], nums[r] = nums[r], nums[l]
-#                 if nums[l] >= pivot:
-#                     l += 1
-#                 if nums[r] <= pivot:
-#                     r -= 1
-
-
-arr = [10, 15, 7, 8, 9, 1, 5]
-n = len(arr)
-quickSort(arr, 0, n - 1)
-print(arr)
-
-
-
-
-
-
-#
-# def quick_sort(arr):
-#     """快速排序"""
-#     if len(arr) < 2:
-#         return arr
-#     mid = arr[0]
-#     # 定义基准值左右两个数列
-#     left, right = [], []
-#     # 从原始数组中移除基准值
-#     arr.remove(mid)
-#     for item in arr:
-#         # 大于基准值放右边
-#         if item >= mid:
-#             # k -= 1
-#             right.append(item)
-#         else:
-#             # 小于基准值放左边
-#             left.append(item)
-#     # 使用迭代进行比较
-#     return quick_sort(left) + [mid] + quick_sort(right)
-#
-#
-# arr = quick_sort([10, 7, 8, 9, 1, 5])
+# arr = [10, 15, 7, 8, 9, 1, 5]
+# n = len(arr)
+# quickSort(arr, 0, n - 1)
 # print(arr)
+
+
+# 快排求topk
+def min_num(arr, m):
+    start, end = 0, len(arr) - 1
+    index = quick_index(arr, start, end)
+    while index != m:
+        if index < m:
+            index = quick_index(arr, index + 1, end)
+        else:
+            index = quick_index(arr, start, index)
+    return arr[:m]
+
+
+def quick_index(arr, left, right):
+    low = left
+    high = right
+    mid = arr[left]
+    while low < high:
+        while low < high and arr[high] <= mid:
+            high -= 1
+        if low < high:
+            arr[low] = arr[high]
+            low += 1
+        while low < high and arr[low] >= mid:
+            low += 1
+        if low < high:
+            arr[high] = arr[low]
+            high -= 1
+    arr[low] = mid
+    return low
+
+
+arr = [5, 2, 1, 3, 8, 7, 6, 4]
+res = min_num(arr, 2)
+print(res)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

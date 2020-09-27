@@ -27,6 +27,7 @@ from utils import *
 class Solution:
     def pathSum(self, root, sum):
         res, path = [], []
+
         def recur(root, tar):
             if not root:
                 return

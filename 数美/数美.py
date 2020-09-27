@@ -17,4 +17,17 @@ def func():
         right = i * 100 + 99
         print(str(left) + '-' + str(right) + ' ' + str(count))
 
-func()
+# func()
+
+
+def func1():
+    dict = {}
+    strs = ['a', 'b', 'a', 'c', 'a', 'b', 'b', 'c']
+    for item in strs:
+        dict[item] = dict.get(item, 0) + 1
+        if dict[item] == 3:
+            del dict[item]
+    print(list(dict.keys())[0])
+
+
+func1()

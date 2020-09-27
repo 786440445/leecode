@@ -7,8 +7,10 @@ class Solution1:
         return self.inorderTraversal(root.left) + self.inorderTraversal(root.right) + [root.val]
 
 
+
 ### 非递归算法，使用栈，增加一个颜色标记，对于中序，前序，后续都可以使用
 from utils import *
+
 
 class Solution2:
     def inorderTraversal(self, root: TreeNode):
@@ -26,6 +28,7 @@ class Solution2:
             else:
                 ret.append(node.val)
         return ret
+
 
 root = create_tree([1, 2, 3, 4, 5, 6, 7, 8])
 ret1 = Solution1().inorderTraversal(root)

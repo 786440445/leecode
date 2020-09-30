@@ -7,3 +7,8 @@
 @Date   ：2020/9/22 2:41 PM
 @Desc   ：
 =================================================='''
+
+def func(arr):
+    for item in arr:
+        if item
+    pass

@@ -1,3 +1,7 @@
+'''
+0-1   背包问题
+'''
+
 class Solution():
     def func(self, lis, V, N):
         dp = [0]*(V+1)

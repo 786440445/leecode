@@ -29,10 +29,26 @@ class Solution2:
                 ret.append(node.val)
         return ret
 
+class Solution3:
+    def inorderTraversal(self, root):
+        ret = []
+        stack = []
+        stack.append(root)
+        while stack:
+            node = stack.pop()
+            ret.append(node.val)
+            if node.left:
+                stack.append(node.left)
+            if node.right:
+                stack.append(node.right)
+        return list(reversed(ret))
+
 
 root = create_tree([1, 2, 3, 4, 5, 6, 7, 8])
 ret1 = Solution1().inorderTraversal(root)
 ret2 = Solution2().inorderTraversal(root)
+ret3 = Solution3().inorderTraversal(root)
 
 print(ret1)
 print(ret2)
+print(ret3)

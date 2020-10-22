@@ -9,18 +9,18 @@
 =================================================='''
 import functools
 
+
 def cmp(x, y):
     if x[0] > y[0]:
         return 1
-    elif x[0] < y[0]:
+    if x[0] < y[0]:
         return -1
-    else:
-        if x[1] == y[1]:
-            return 0
-        elif x[1] < y[1]:
-            return 1
-        else:
-            return -1
+    if x[1] > y[1]:
+        return -1
+    if x[1] < y[1]:
+        return 1
+    return 0
+
 
 if __name__ == '__main__':
     n = int(input())
@@ -32,17 +32,22 @@ if __name__ == '__main__':
 
     mat = sorted(mat, key=functools.cmp_to_key(cmp))
     print(mat)
-    nums = 0
-    old_r = 0
-    for l, r in mat:
-        if old_r == 0:
+    nums = 1
+    old_l = mat[0][0]
+    old_r = mat[0][1]
+    max_v = float('-inf')
+    for l, r in mat[1:]:
+        if r <= old_r:
             nums += 1
             old_r = r
         else:
-            if r <= old_r:
-                nums += 1
-                old_r = r
-    print(nums)
+            nums = 1
+            old_l = l
+            old_r = r
+
+    if nums > max_v:
+        max_v = nums
+    print(max_v)
     #
     # dp = [[0]* n for _ in range(n)]
     # for i in range(n):

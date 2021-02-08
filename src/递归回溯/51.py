@@ -34,13 +34,23 @@ n 皇后问题研究的是如何将 n 个皇后放置在 n×n 的棋盘上，并
 
 import copy
 
+# 回溯算法
 class Solution:
     def solveNQueens(self, n: int):
         mask = [[0] * n for _ in range(n)]
         location = [["." for _ in range(n)] for _ in range(n)]
         result = []
         self.generate(0, n, location, result, mask)
-        return result
+        self.print_matrix(result)
+
+    def print_matrix(self, result):
+        m = len(result)
+        for i in range(m):
+            res = ''
+            l = len(result[i])
+            for j in range(l):
+                res += ' '.join(result[i][j]) + '\n'
+            print(res)
 
     def generate(self, k, n, location, result, mask):
         if k == n:
@@ -69,10 +79,10 @@ class Solution:
                 if newx >= 0 and newx < n and newy >= 0 and newy < n:
                     mask[newx][newy] = 1
 
-
-Solution().solveNQueens(4)
-
-
+n = int(input('输入皇后个数：'))
+ret = Solution().solveNQueens(n)
+#
+# # 递归算法
 # class Solution1:
 #     def solveNQueens(self, n: int):
 #         def check(nums, new):
@@ -81,12 +91,14 @@ Solution().solveNQueens(4)
 #                     return False
 #             return True
 #
+#         # 构建初始map
 #         mapping, ans = ['.' * i + 'Q' + '.' * (n - i - 1) for i in range(n)], []
 #
 #         def backtrack(nums):
 #             if len(nums) == n:
 #                 ans.append([mapping[c] for c in nums])
 #                 return
+#
 #             for i in range(n):
 #                 if check(nums, i):
 #                     backtrack(nums + [i])
@@ -94,5 +106,9 @@ Solution().solveNQueens(4)
 #         backtrack([])
 #         return ans
 #
-# ret = Solution1().solveNQueens(4)
-# print(ret)
+# def print_matrix(ans):
+#     pass
+#
+# n = int(input('输入皇后个数：'))
+# ret = Solution1().solveNQueens(n)
+# print_matrix(ret)

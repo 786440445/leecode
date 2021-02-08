@@ -65,5 +65,6 @@ def binary_search(stack, target):
             end = mid - 1
     return index
 
-# print(Solution1().lengthOfLIS([11, 12, 13, 14, 15, 6, 7, 8, 101, 18]))
-print(binary_search([11, 12, 13, 14, 15, 101], 16))
+
+print(Solution().lengthOfLIS([11, 12, 13, 14, 15, 6, 7, 8, 101, 18]))
+# print(binary_search([11, 12, 13, 14, 15, 101], 16))

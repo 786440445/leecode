@@ -32,5 +32,22 @@ class Solution:
         return res
 
 
-ret = Solution().permute([1, 2, 3])
-print(ret)
+# ret = Solution().permute([1, 2, 3])
+# print(ret)
+#coding=utf-8
+import sys
+#str = input()
+#print(str)
+
+
+def func(strs):
+    res = []
+    def recurr(path, tmp):
+        if not path:
+            res.append(tmp)
+        for i in range(len(path)):
+            recurr(path[:i] + path[i+1:], tmp + path[i])
+    recurr(strs, '')
+    print(res)
+
+func('abc')

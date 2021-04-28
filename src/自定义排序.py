@@ -20,9 +20,9 @@ def cmp1(a, b):
     if b[0] > a[0]:
         return -1
     if b[1] < a[1]:
-        return -1
-    if b[1] > a[1]:
         return 1
+    if b[1] > a[1]:
+        return -1
     return 0
 
 
